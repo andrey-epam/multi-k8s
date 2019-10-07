@@ -19,7 +19,6 @@ before_install:
 
 script:
   - docker run andrey1961/react-test npm test -- --coverage
-
 deploy:
   provider: script
   script: bash ./deploy.sh
