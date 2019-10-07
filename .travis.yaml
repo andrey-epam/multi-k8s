@@ -1,5 +1,5 @@
 sudo: required
-services: 
+services:
   - docker
 env:
   global:
@@ -12,7 +12,7 @@ before_install:
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project multi-8ks-254815
-  - gloud set compute/zone europe-north1-a
+  - gcloud set compute/zone europe-north1-a
   - gcloud container clusters get-credentials multi-cluster 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t andrey1961/react-test -f ./client/Dockerfile.dev
@@ -23,6 +23,6 @@ script:
 deploy:
   provider: script
   script: bash ./deploy.sh
-  on: 
-    branch: master   
+  on:
+    branch: master
     
